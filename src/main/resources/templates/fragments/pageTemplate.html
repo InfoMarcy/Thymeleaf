@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<!-- add this  xmlns:th="http://www.w3.org/1999/xhtml" for thymeLeaf to work-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+  <!-- Bootstrap Core CSS -->
+    <link  rel="stylesheet" media="screen" th:href="@{/bootstrap/css/bootstrap.min.css}" />    
+ 
+    <!-- Custom fonts for this template -->
+    <link href="/bootstrap/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css' />
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css' />
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css' />
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+<head>
+<meta charset="UTF-8" /> 
+
+<title th:text="#{index.page.title}">Page Title</title>
+</head>
+<body>
+<article class="starter-template">
+
+<!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-inverse fixed-top" th:fragment="navbar">
+      
+    
+        <a class="navbar-brand js-scroll-trigger" href="/index">  &nbsp; Luxmart Web Design</a>
+        
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarResponsive">
+        
+       <ul class="nav navbar-nav ml-auto">
+       
+         
+          
+                  
+                             
+       
+            
+          </ul>
+ 
+        </div>
+        
+        
+    </nav>
+ 
+
+
+<section class="jumbotron" th:fragment="jumbotron">
+<div class="container">
+<h1>Spring Framework Guru</h1>
+<p class="lead" th:text="#{index.course.tagline}">Tag Line</p>
+</div>
+
+
+</section>
+<section  class="container">
+<div class="row">
+<div class="col-md-12 text-center" >
+<h3 th:text="#{index.course.headline}">Course Headline</h3>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4">
+
+<img th:src="@{images/beer.jpg}" alt="image" class="center-block thumbnail" style="width:200px" />
+<h5 class="text-success">introduction to spring</h5>
+<p>Introduction course for the spring  Framework</p>
+<div class="row align-middle">
+<div class="col-md-4">
+<img th:src="@{images/beer.jpg}" alt="image" class="rounded" style="width:100px" />
+</div>
+
+<div class="col-md-6">
+<p class="lead">Marci Garcia</p>
+</div>
+<div class="col-md-2"><a href="/product" class="h3">Free</a></div>
+
+</div>
+
+</div>
+</div>
+
+</section>
+<!-- product list home page -->
+<div class="col-md-4"  th:fragment="productDiv">
+
+
+<div class="course-listing">
+
+
+<div class="row">
+
+
+<a href="product.html" th:href="@{'/product/'+${product.productId}}">
+<div class="col-md-12">
+<div class="course-box-image-container">
+
+<div class="row">
+<div class="col-md-12">
+<div class="course-listing-name" th:text="${product.courseName}">
+Course Name
+</div>
+</div>
+
+</div>
+
+<img role="presentation"
+th:src="@{'images/'+${product.imageUrl}}"
+class="course-box-image" style="width:300px"/>
+
+</div>
+
+
+
+<div class="course-listing-title" th:text="${product.courseTitle}">
+Course Title
+</div>
+</div>
+
+</a>
+
+</div>
+<div class="row course-listing-extra-info col-xs-12">
+<div class="col-xs-8">
+<img align="left" alt="author name"                                         
+                                        class="img-circle"/>
+    <!--                          
+  <div class="small course-author-name" th:text="${product.author}">
+                                        
+                                        
+                                        Author Name
+                                        </div>
+                                        -->   
+                                        <div class="col-xs-12">
+                                        <div class="small course-price" th:text="${product.price > 0 ?  '$' + product.price : 'Free' }">Free</div>
+                                        </div>
+
+
+</div>
+</div>
+
+</div>
+</div>
+
+
+</article>
+
+</body>
+
+<footer th:fragment="footer">
+<!-- Footer -->
+      <div class="container-fluid">
+        <div class="navbar navbar-default navbar-fixed-bottom row">
+          <div class="col-md-4">
+            <span class="copyright">Copyright &copy; Luxmart Web Design 2017</span>
+          </div>
+          
+          <div class="col-md-8 text-right">
+            <ul class="list-inline quicklinks">
+              <li class="list-inline-item">
+                <a href="#">Privacy Policy</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">Terms of Use</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+</footer>
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+</html>

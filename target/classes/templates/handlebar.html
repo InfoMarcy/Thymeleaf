@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!-- add this  xmlns:th="http://www.w3.org/1999/xhtml" for thymeLeaf to work-->
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+     <!-- Bootstrap Core CSS -->
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" />    
+ 
+    <!-- Custom fonts for this template -->
+    <link href="/bootstrap/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css' />
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css' />
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css' />
+
+    <!-- Custom styles for this template -->
+    <link href="/css/main.css" rel="stylesheet" />
+
+<style type="text/css">
+.hide-me {
+display:none;
+}
+
+</style>
+
+<title>Working with Ajax and Json</title>
+</head>
+  <body id="page-top">
+  
+ <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="#">Working with Ajax and Json</a>   
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          </li>
+          
+         
+        </ul>
+        
+      </div>
+    </nav>
+
+    <!-- Services -->
+    <section id="services" class="container">
+    
+    
+    <div class="row">
+   <div class="col-md-12">
+ 
+     <h3 class="text-center">Learning JSON and AJAX using Handlebar template</h3>
+    <input type="button" id="btn_handlebar" value="Get Pets" class="btn btn-primary" />
+   
+   <br /><br />
+   <!-- https://www.youtube.com/watch?v=wSNa5b1mS5Y -->
+     <!-- working with handleBar templates and json data -->
+    <div id="hadleBars-html">
+   
+    </div>  
+
+     </div>
+     </div>
+
+      
+    </section>
+    
+     
+    
+     
+    
+               <!-- HandleBar script for working with json data -->
+		       <script id="handleBar-template" type="text/x-handlebars-template">
+                 
+
+                 {{#each pets}} 
+
+                <div class="row">
+     <div class="col-md-5" >
+     
+             <img src="{{photo}}" class="figure-img img-fluid rounded" width="350px" />
+
+      </div>
+
+
+     <div class="col-md-7">
+           <h2>{{name}} <span class="lead">({{species}})</span></h2>
+<p class="lead">Age: {{calculateAge birthYear}} </p>
+
+{{#if favFoods}}
+<h4 class="lead">Favorite Foods</h4>
+<ul class="list-group">
+{{#each favFoods}}
+<li class="list-group-item list-group-item-info">
+{{{this}}}
+</li>
+{{/each}}
+</ul>
+{{/if}}
+     </div>
+
+      
+     </div>
+
+                 {{/each}}
+
+
+                 </script>
+    
+
+		  <footer>
+		   
+              <!-- Custom scripts for this template -->
+              <script src="/js/main.js"></script>
+       
+		       
+		       
+		      
+		       
+		       
+		       <!-- HandleBar template for working with json data -->
+		       <script src="/JsonAndAjax/handlebars-v4.0.11.js"></script>
+		       <!-- javaScript file for working with json data and HanderBar -->
+		        <script src="/JsonAndAjax/Json_Ajax_Handlerbars.js"></script> 
+		  </footer>
+
+</body>
+</html>

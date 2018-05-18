@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!-- add this  xmlns:th="http://www.w3.org/1999/xhtml" for thymeLeaf to work-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+
+  <!-- Bootstrap Core CSS -->
+    <link  rel="stylesheet" media="screen" th:href="@{/bootstrap/css/bootstrap.min.css}" />    
+ 
+    <!-- Custom fonts for this template -->
+    <link href="/bootstrap/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css' />
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css' />
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css' />
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+<title>Secured Content</title>
+</head>
+<body>
+<article class="starter-template">
+
+
+
+<!-- Navigation -->
+<nav th:replace="fragments/pageTemplate :: navbar"></nav>
+
+<section class="container">
+
+<div class="row">
+<div class="col-md-12">
+<h1>Spring security Demo</h1>
+</div>
+</div>
+
+
+<div class="row" sec:authorize="isAuthenticated()">
+<div class="col-md-12" style="color:green">
+<h2>User is logged in</h2>
+<p sec:authentication="principal.username">UserName</p>
+</div>
+</div>
+
+
+
+<div class="row" sec:authorize="!isAuthenticated()">
+<div class="col-md-12" style="color:red">
+<h2>User is logged out</h2>
+</div>
+</div>
+
+
+<div class="row" sec:authorize="hasRole('ROLE_ADMIN')">
+<div class="col-md-12">
+<h2>User has Role Admin</h2>
+</div>
+</div>
+
+
+<div class="row" sec:authorize="hasRole('ROLE_USER')">
+<div class="col-md-12">
+<h2>User has Role User</h2>
+</div>
+</div>
+
+</section>
+
+
+</article>
+</body>
+
+<!-- Page footer -->
+<div th:replace="fragments/pageTemplate :: footer"></div>
+
+
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+</html>

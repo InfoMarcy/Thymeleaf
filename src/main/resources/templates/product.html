@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<!-- add this  xmlns:th="http://www.w3.org/1999/xhtml" for thymeLeaf to work-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+  <!-- Bootstrap Core CSS -->
+    <link  rel="stylesheet" media="screen" th:href="@{/bootstrap/css/bootstrap.min.css}" />    
+ 
+    <!-- Custom fonts for this template -->
+    <link href="/bootstrap/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css' />
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css' />
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css' />
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+<title th:text="#{product.page.title}">View Product</title>
+</head>
+<body>
+<article class="starter-template">
+
+
+
+<!-- Navigation -->
+
+<nav th:replace="fragments/pageTemplate :: navbar"></nav>
+
+
+<!--  
+<section th:replace="fragments/pageTemplate :: jumbotron">
+</section>
+-->
+
+<section class="container ">
+<div class="row">
+<div class="col-md-12">
+<h3 th:text="${product.courseName}">Course Name</h3>
+</div>
+</div>
+<div class="row jumbotron" style="padding: 20px;">
+<div class="col-md-6">
+
+
+<img th:src="@{'../images/'+${product.imageUrl}}" alt="image" class="center-block img-thumbnail" style="width:506px;height:290px" />
+<div class="row">
+<div class="col-md-8">
+
+<!-- display image from oneto many relation -->
+<img align="left" class="img-circle" th:src="@{'../images/'+${product.author[0].image}}" 
+alt="image" style="width:50px; height:50px; border-radius: 25px; transition: all 1s ease-in;"/>
+
+<p class="text-muted pull-left " th:text="${product.author[0].firstName + ' ' + product.author[0].lastName}">Author Name</p>
+
+</div>
+<div class="col-md-4 ">
+
+<p class="text-success pull-right " th:text="${product.price > 0 ?  '$' + product.price : 'Free' }">$Price</p>
+</div>
+
+</div>
+
+
+<div class="row col-xs-12">
+<ol class="breadcrumb">
+
+<!-- iteration of a onetoMany cascade eager into list-->
+<li th:each="productCategory : ${product.productCategories}">
+<a href="#" th:text="${productCategory.category + ' '}">Categories</a>
+</li>
+
+</ol>
+
+</div>
+
+</div>
+<div class="col-md-6">
+<div>
+<h2 th:text="${product.courseTitle}">Course Title</h2>
+<p th:text="${product.courseDescription}">Course Description</p>
+</div>
+
+</div>
+
+
+
+</div>
+<div class="row">
+<div class="col-md-6"></div>
+<div class="col-md-6">
+
+<button class="btn btn-success" th:text="#{product.buy.now}">Buy Now!</button>
+</div>
+</div>
+</section> 
+
+
+</article>
+</body>
+
+<!-- Page footer -->
+<div th:replace="fragments/pageTemplate :: footer"></div>
+
+
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+</html>
